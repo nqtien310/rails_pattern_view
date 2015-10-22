@@ -1,8 +1,7 @@
 # RailsPatternView
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/rails_pattern_view`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Ever annoyed with having to copy/paste the .js views around for very common logic, such as refresh table after CRUD?
+This gem solves it
 
 ## Installation
 
@@ -22,7 +21,30 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+class CatsController < ApplicationController
+  use_pattern :ajax_table
+
+  def new; end
+  def edit; end
+end
+
+class DogsController < ApplicationController
+  use_pattern :ajax_table
+
+  def new; end
+  def edit; end
+end
+
+```
+Add this in your views
+
+```
+views/patterns/ajax_table/new.js.erb
+views/patterns/ajax_table/edit.js.erb
+```
+
+Both CatsController & DogsController now can share the views within ajax_table
 
 ## Development
 
