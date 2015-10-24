@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 class UsersController < ActionController::Base
-  include RailsPatternView
 end
 
 RSpec.describe UsersController, :type => :controller do
