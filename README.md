@@ -1,7 +1,6 @@
 # RailsPatternView
 
-Ever annoyed with having to copy/paste the .js views around for very common logic, such as refresh table after CRUD?
-This gem solves it
+Ever annoyed with having to copy/paste the Rails views around for very common pages, this gem will solve it
 
 ## Installation
 
@@ -30,7 +29,7 @@ class CatsController < ApplicationController
 end
 
 class DogsController < ApplicationController
-  use_pattern :ajax_table
+  use_pattern :ajax_table, only: [:new]
 
   def new; end
   def edit; end
@@ -40,11 +39,24 @@ end
 Add this in your views
 
 ```
-views/patterns/ajax_table/new.js.erb
-views/patterns/ajax_table/edit.js.erb
+views/patterns/ajax_table/new.erb
+views/patterns/ajax_table/edit.erb
+views/dogs/edit.erb
 ```
 
 Both CatsController & DogsController now can share the views within ajax_table
+
+Options
+
+only
+```
+use_pattern :ajax_table, only: [:new, :edit]
+```
+
+except
+```
+user_pattern :ajax_table, except: [:some_action]
+```
 
 ## Development
 

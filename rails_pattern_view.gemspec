@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Tien Nguyen"]
   spec.email         = ["nqtien310@gmail.com"]
 
-  spec.summary       = %q{pattern for js views}
-  spec.description   = %q{Force you to DRY the js views, so common functions like refresh table after CRUD item won't be copied/pasted to multiple places}
+  spec.summary       = %q{Pattern for Rails actions}
+  spec.description   = %q{provide a way to DRY shared/common Rails views}
   spec.homepage      = "https://github.com/nqtien310"
   spec.license       = "MIT"
 
