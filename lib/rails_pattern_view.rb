@@ -5,18 +5,31 @@ module RailsPatternView
 
   module ClassMethods
     def use_pattern(pattern, opts = {})
-      only   = opts[:only]   || []
-      except = opts[:except] || []
+      only    = opts[:only]    || []
+      except  = opts[:except]  || []
+      mapping = opts[:mapping] || {}
       raise 'cannot mix `only` & `except`' if only.present? && except.present?
       raise '`only` must be Array type'    if !only.is_a? Array
       raise '`except` must be Array type'  if !except.is_a? Array
+      raise '`mapping` must be Hash type'  if !mapping.is_a? Hash
+      mappings = resolve_mapping(mapping)
 
       define_method(:pattern_name) { pattern }
-      private :pattern_name
+      define_method(:pattern_actions_mapping) { mappings }
 
-      #at this point, only & except must be arrays
+      private :pattern_name, :pattern_actions_mapping
       actions = (only.present? ? only : action_methods.to_a) - except
-      before_filter :filter_render, only: actions
+      before_filter :filter_render, :only => actions
+    end
+
+    private
+
+    def resolve_mapping(mapping)
+      pattern_actions_mapping = {}
+      mapping.each do |template, actions|
+        actions.each { |action| pattern_actions_mapping[action] = template }
+      end
+      pattern_actions_mapping
     end
   end
 
@@ -25,7 +38,8 @@ module RailsPatternView
   def filter_render
     instance_eval do
       def default_render
-        render :template => "patterns/#{pattern_name}/#{params[:action]}"
+        action_name = pattern_actions_mapping[params[:action]] || params[:action]
+        render :template => "patterns/#{pattern_name}/#{action_name}"
       end
     end
   end

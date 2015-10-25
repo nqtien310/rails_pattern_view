@@ -76,4 +76,17 @@ RSpec.describe UsersController, :type => :controller do
       expect(response).to render_template 'patterns/ajax_table/index'
     end
   end
+
+  context '`mapping` given' do
+    before do
+      controller.class.use_pattern :ajax_table, mapping: {'new' => ['new', 'index']}
+    end
+
+    it 'renders patterns follow the mapping' do
+      get :new
+      expect(response).to render_template 'patterns/ajax_table/new'
+      get :index
+      expect(response).to render_template 'patterns/ajax_table/new'
+    end
+  end
 end
