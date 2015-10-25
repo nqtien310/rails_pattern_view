@@ -58,6 +58,12 @@ except
 user_pattern :ajax_table, except: [:some_action]
 ```
 
+mapping: Share 1 template for all actions
+```
+use_pattern :ajax_table, mapping: {:refresh => [:create, :update, :destroy]}
+```
+all "create/update/destroy" actions will now render "views/patterns/ajax_table/refresh"
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
