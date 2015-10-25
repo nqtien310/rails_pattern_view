@@ -1,3 +1,5 @@
+[![Gem Version](https://badge.fury.io/rb/rails_pattern_view.svg)](https://badge.fury.io/rb/rails_pattern_view)
+
 # RailsPatternView
 
 Ever annoyed with having to copy/paste the Rails views around for very common pages, this gem will solve it
