@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Pattern for Rails actions}
   spec.description   = %q{provide a way to DRY shared/common Rails views}
-  spec.homepage      = "https://github.com/nqtien310"
+  spec.homepage      = "https://github.com/nqtien310/rails_pattern_view"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
