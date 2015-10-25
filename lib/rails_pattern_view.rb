@@ -47,5 +47,3 @@ module RailsPatternView
     end
   end
 end
-
-ActionController::Base.send(:include, RailsPatternView)
