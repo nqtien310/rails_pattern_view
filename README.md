@@ -1,6 +1,7 @@
 # RailsPatternView
 
 Ever annoyed with having to copy/paste the Rails views around for very common pages, this gem will solve it
+Creaet your view folder (pattern) once and instruct your controller to use that pattern
 
 ## Installation
 
