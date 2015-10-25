@@ -53,19 +53,30 @@ Options
 
 only
 ```
-use_pattern :ajax_table, only: [:new, :edit]
+use_pattern :ajax_table, only: [:create, :update, :destroy]
 ```
 
 except
 ```
-user_pattern :ajax_table, except: [:some_action]
+user_pattern :ajax_table, except: [:new]
 ```
 
-mapping: Share 1 template for all actions
+mapping
 ```
-use_pattern :ajax_table, mapping: {:refresh => [:create, :update, :destroy]}
+use_pattern :ajax_table, mapping: {:refresh_table => [:create, :update, :destroy]}
 ```
-all "create/update/destroy" actions will now render "views/shared/patterns/ajax_table/refresh"
+all "create/update/destroy" actions will now render "views/shared/patterns/ajax_table/refresh_table"
+
+template
+```
+use_pattern :ajax_table, only: [:create, :update, :destroy], template: 'refresh_table'
+```
+
+Notes:
+
+only & except can't be mixed
+
+mapping & template can't be mixed
 
 ## Development
 
