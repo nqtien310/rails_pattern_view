@@ -39,7 +39,7 @@ module RailsPatternView
     instance_eval do
       def default_render
         action_name = pattern_actions_mapping[params[:action]] || params[:action]
-        render :template => "patterns/#{pattern_name}/#{action_name}"
+        render :template => "shared/patterns/#{pattern_name}/#{action_name}"
       end
     end
   end
