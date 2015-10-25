@@ -39,8 +39,8 @@ end
 Add this in your views
 
 ```
-views/patterns/ajax_table/new.erb
-views/patterns/ajax_table/edit.erb
+views/shared/patterns/ajax_table/new.erb
+views/shared/patterns/ajax_table/edit.erb
 views/dogs/edit.erb
 ```
 
@@ -62,7 +62,7 @@ mapping: Share 1 template for all actions
 ```
 use_pattern :ajax_table, mapping: {:refresh => [:create, :update, :destroy]}
 ```
-all "create/update/destroy" actions will now render "views/patterns/ajax_table/refresh"
+all "create/update/destroy" actions will now render "views/shared/patterns/ajax_table/refresh"
 
 ## Development
 
